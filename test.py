@@ -68,9 +68,12 @@ for i in column:
 #cnn
 from sklearn.model_selection import train_test_split
 
-X = dataset.drop('Outcome', axis=1)
-Y = dataset['Outcome']=='HAPV'
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.25, random_state = 1)
+# X = dataset.drop('Outcome', axis=1)
+# Y = dataset['Outcome']=='HAPV'
+# X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.25, random_state = 1)
+
+X_train, X_test, y_train, y_test = train_test_split(dataset.drop('AF3', axis=1), dataset['AF3'], test_size=0.25, random_state=1)
+
 
 X_train1 = X_train.values.reshape(28689,14,1)
 X_test1 = X_test.values.reshape(9563,14,1)
