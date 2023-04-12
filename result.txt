@@ -1,3 +1,7 @@
+Shape of X_train: (28689, 14)
+Shape of X_test: (9563, 14)
+Shape of y_train: (28689,)
+Shape of y_test: (9563,)
 
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   

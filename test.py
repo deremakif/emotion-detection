@@ -75,6 +75,16 @@ from sklearn.model_selection import train_test_split
 # X_train, X_test, y_train, y_test = train_test_split(dataset.drop('AF3', axis=1), dataset['AF3'], test_size=0.25, random_state=1)
 X_train, X_test, y_train, y_test = train_test_split(dataset.drop('AF4', axis=1), dataset['AF4'], test_size=0.25, random_state=1)
 
+# In this example, X_train and X_test contain the training and testing subsets of the input data, 
+# respectively, and y_train and y_test contain the corresponding subsets of the target variable. 
+# The test_size argument specifies the proportion of the data to include in the testing set, 
+# and the random_state argument ensures that the same random splits will be generated each time 
+# the code is run.
+
+print("Shape of X_train:", X_train.shape)
+print("Shape of X_test:", X_test.shape)
+print("Shape of y_train:", y_train.shape)
+print("Shape of y_test:", y_test.shape)
 
 X_train1 = X_train.values.reshape(28689,14,1)
 X_test1 = X_test.values.reshape(9563,14,1)
@@ -87,7 +97,6 @@ X_test1.shape
 
 epochs = 20
 num_classes = 1
-
 
 model = Sequential()
 model.add(Conv1D(32, (1), input_shape=(14,1), activation = 'relu'))
@@ -106,6 +115,3 @@ model.add(Dense(64, activation='relu'))
 model.add(Dense(num_classes, activation='softmax'))
 
 model.summary()
-
-
-
