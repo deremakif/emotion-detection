@@ -8,6 +8,7 @@ import pandas as pd
 import seaborn as sns
 
 #cnn
+import keras
 from keras.models import Sequential, Model
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv1D, Conv2D, MaxPooling1D, MaxPooling2D
@@ -115,3 +116,22 @@ model.add(Dense(64, activation='relu'))
 model.add(Dense(num_classes, activation='softmax'))
 
 model.summary()
+
+model.compile(loss=keras.losses.binary_crossentropy, optimizer=keras.optimizers.Adam(), metrics=['accuracy'])
+model = model.fit(X_train1, y_train, batch_size=128,
+            epochs=epochs, validation_data=(X_test1, y_test), verbose=1)
+
+np.set_printoptions(threshold=np.inf)
+# print(model.history)
+
+# print(model.layers)
+# print(model.get_weights)
+
+plt.plot(model.history['loss'])
+plt.plot(model.history['val_loss'])
+plt.title('model train vs validation loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'validation'], loc='upper right')
+plt.show()
+
